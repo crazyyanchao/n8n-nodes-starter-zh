@@ -1,0 +1,57 @@
+{
+  "name": "n8n-nodes-tushare",
+  "version": "0.1.4",
+  "description": "n8n custom node for Tushare",
+  "keywords": [
+    "n8n-community-node-package"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/crazyyanchao/n8n-nodes-tushare",
+  "author": {
+    "name": "Tony.Ma",
+    "email": "yanchaoma@foxmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/crazyyanchao/n8n-nodes-tushare.git"
+  },
+  "engines": {
+    "node": ">=22.16"
+  },
+  "main": "index.js",
+  "scripts": {
+    "build": "npx rimraf dist && tsc && gulp build:icons",
+    "dev": "tsc --watch",
+    "format": "prettier nodes credentials --write",
+    "lint": "eslint nodes credentials package.json",
+    "lintfix": "eslint nodes credentials package.json --fix",
+    "prepublishOnly": "npm run build && npm run lint -c .eslintrc.prepublish.js nodes credentials package.json"
+  },
+  "files": [
+    "dist"
+  ],
+  "n8n": {
+    "n8nNodesApiVersion": 1,
+    "credentials": [
+      "dist/credentials/ExampleCredentialsApi.credentials.js",
+      "dist/credentials/HttpBinApi.credentials.js",
+      "dist/credentials/TushareApi.credentials.js"
+    ],
+    "nodes": [
+      "dist/nodes/ExampleNode/ExampleNode.node.js",
+      "dist/nodes/HttpBin/HttpBin.node.js",
+      "dist/nodes/Tushare/Tushare.node.js"
+    ]
+  },
+  "devDependencies": {
+    "@typescript-eslint/parser": "~8.36",
+    "eslint": "^8.57.1",
+    "eslint-plugin-n8n-nodes-base": "^1.16.3",
+    "gulp": "^5.0.1",
+    "prettier": "^3.6.2",
+    "typescript": "^5.8.3"
+  },
+  "peerDependencies": {
+    "n8n-workflow": "*"
+  }
+}
